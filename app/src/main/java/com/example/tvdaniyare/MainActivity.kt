@@ -3,6 +3,7 @@ package com.example.tvdaniyare
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,6 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Button
@@ -73,11 +76,36 @@ fun AboutScreen(navController: androidx.navigation.NavController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item { Text("Integrantes del equipo:") }
-        item { Text("1. Daniel de Jesus Lopez Perez") }
-        item { Text("2. Yareni Yuritza Ramos Santiago") }
+        item {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Image(
+                    painter = painterResource(id = R.drawable.daniel_photo),
+                    contentDescription = "Foto de Daniel",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .padding(bottom = 8.dp),
+                    contentScale = ContentScale.Crop
+                )
+                Text("1. Daniel de Jesus Lopez Perez")
+            }
+        }
+        item {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Image(
+                    painter = painterResource(id = R.drawable.yareni_photo),
+                    contentDescription = "Foto de Yareni",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .padding(bottom = 8.dp),
+                    contentScale = ContentScale.Crop
+                )
+                Text("2. Yareni Yuritza Ramos Santiago")
+            }
+        }
         item { Text("Grado: 9") }
         item { Text("Grupo: B") }
         item { Text("Materia: DESARROLLO PARA DISPOSITIVOS INTELIGENTES") }
